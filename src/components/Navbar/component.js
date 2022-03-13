@@ -3,12 +3,7 @@ import './style.scss';
 //ASSETS
 import searchIcon from '../../assets/icons/search.svg';
 import burgerIcon from '../../assets/icons/burger.svg';
-import userIcon from '../../assets/icons/user.svg';
-import heartIcon from '../../assets/icons/heart.svg';
-import globeIcon from '../../assets/icons/globe-americas.svg';
-import messageIcon from '../../assets/icons/message-text-alt.svg';
-import bulbIcon from '../../assets/icons/bulb-on.svg';
-import cogIcon from '../../assets/icons/cog.svg';
+import { navLinks } from '../../assets/variables/navLinks';
 
 const Navbar = () => {
     //STATE & VARIABLES
@@ -37,30 +32,12 @@ const Navbar = () => {
             </span>
 
             <ul className={isHidden ? 'nav-routes active' : 'nav-routes'}>
-                <li>
-                    <img src={userIcon} alt='user profile button' />
-                    <span>Profile</span>
-                </li>
-                <li>
-                    <img src={heartIcon} alt='liked songs button' />
-                    <span>Liked Songs</span>
-                </li>
-                <li>
-                    <img src={globeIcon} alt='language button' />
-                    <span>Language</span>
-                </li>
-                <li>
-                    <img src={messageIcon} alt='contact us button' />
-                    <span>Contact us</span>
-                </li>
-                <li>
-                    <img src={bulbIcon} alt='FAQs button' />
-                    <span>FAWs</span>
-                </li>
-                <li>
-                    <img src={cogIcon} alt='settings button' />
-                    <span>Settings</span>
-                </li>
+                {navLinks.map(({ icon, altText, navText }) => (
+                    <li>
+                        <img src={icon} alt={altText} />
+                        <span>{navText}</span>
+                    </li>
+                ))}
             </ul>
         </nav>
     );
