@@ -1,0 +1,21 @@
+//Importing assets
+@import '../../styles/abstract/global';
+@import '../../styles/base/variables';
+@import '../../styles/mixins/mixins';
+
+nav{
+    min-height: 10vh;
+    width: 100%;
+    padding: 0 5rem;
+    @include flex(row, space-between, center);
+}
+
+.nav-svg{
+    width: 25px;
+}
+
+@media only screen and (max-width: 768px){
+    nav{
+        padding: 0 1rem;
+    }
+}
