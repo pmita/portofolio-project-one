@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.scss';
 //ASSETS
 import searchIcon from '../../assets/icons/search.svg';
@@ -11,6 +11,13 @@ import bulbIcon from '../../assets/icons/bulb-on.svg';
 import cogIcon from '../../assets/icons/cog.svg';
 
 const Navbar = () => {
+    //STATE & VARIABLES
+    const [isHidden, setIsHidden] = useState(false);
+
+    //EVENTS
+    const handleClick = () => {
+        setIsHidden(!isHidden)
+    }
     return(
         <nav>
             <span>
@@ -18,6 +25,7 @@ const Navbar = () => {
                     className='nav-svg' 
                     src={burgerIcon} 
                     alt='burger menu' 
+                    onClick={handleClick}
                 />
             </span>
             <span>
@@ -28,7 +36,7 @@ const Navbar = () => {
                 />
             </span>
 
-            <ul className='nav-routes'>
+            <ul className={isHidden ? 'nav-routes active' : 'nav-routes'}>
                 <li>
                     <img src={userIcon} alt='user profile button' />
                     <span>Profile</span>
