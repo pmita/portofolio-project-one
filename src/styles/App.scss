@@ -1,0 +1,10 @@
+//Base files
+@import './abstract/global';
+@import './base/variables';
+@import './mixins/mixins';
+
+.App{
+    min-height: 100%;
+    width: 100%;
+    background: red;
+}
