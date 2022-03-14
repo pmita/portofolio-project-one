@@ -1,3 +1,23 @@
-div{
-    background: pink;
+//Base files
+@import '../../styles/abstract/global';
+@import '../../styles/base/variables';
+@import '../../styles/mixins/mixins';
+
+.signup-page{
+    min-height: 90vh;
+    width: 100%;
+    @include flex(column, center, center)
 }
+
+form{
+    width: 55%;
+    min-height: 250px;
+    @include flex(column, space-evenly, stretch);
+    label{
+        margin: 1rem 0;
+        span{
+            margin: 1rem 0;
+        }
+    }
+}
+

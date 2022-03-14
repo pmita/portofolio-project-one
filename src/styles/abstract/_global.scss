@@ -68,24 +68,18 @@
     }
   }
 
-  .clasicLink{
-    text-align: center;
-    text-decoration: underline;
-    color: $green;
-  }
-
 /*---------------forms-----------------*/
-label {
-  display: block;
-  margin: 24px auto;
-}
-label span {
-  display: block;
-  margin-bottom: 6px;
-}
+// label {
+//   display: block;
+//   margin: 24px auto;
+// }
+// label span {
+//   display: block;
+//   margin-bottom: 6px;
+// }
 input, textarea {
-  padding: 8px 6px;
-  font-size: 1em;
+  padding: 1rem 0.5rem;
+  font-size: $h6;
   color: #777;
   width: 100%;
   box-sizing: border-box;
