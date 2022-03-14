@@ -19,7 +19,10 @@ const SignUpPage = () => {
             type: 'text',
             placeholder: 'Please enter your user name',
             label: 'Username',
-            required: true
+            required: true,
+            errorMessage: 'Username should be 3-16 characters and should not include any special characters',
+            pattern: '^[A-Za-z0-9]{3,16}$',
+            autoComplete: 'off'
         },
         {
             id: 2,
@@ -27,7 +30,9 @@ const SignUpPage = () => {
             type: 'email',
             placeholder: 'Please enter your email',
             label: 'Email',
-            required: true
+            required: true,
+            errorMessage: 'Please enter a valid email address',
+            autoComplete: 'off'
         },
         {
             id: 3,
@@ -35,7 +40,10 @@ const SignUpPage = () => {
             type: 'password',
             placeholder: 'Please enter your password',
             label: 'Password',
-            required: true
+            required: true,
+            errorMessage: 'Password should be 8-20 characters and include at least 1 letter, 1 number, and 1 special character',
+            pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+            autoComplete: 'off'
         },
         {
             id: 4,
@@ -43,11 +51,19 @@ const SignUpPage = () => {
             type: 'password',
             placeholder: 'Please confirm your password',
             label: 'Confirm Password',
-            required: true
+            required: true,
+            errorMessage: 'Passwords do not match',
+            pattern: signUpValues.password,
+            autoComplete: 'off'
         }
     ]
 
     //EVENTS
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log(signUpValues);
+    }
+
     const onChange = (e) => {
         setSignUpValues({ ...signUpValues, [e.target.name]: e.target.value })
     }
@@ -55,8 +71,7 @@ const SignUpPage = () => {
     return(
         <div className='signup-page'>
             <h2>Sign Up</h2>
-            <form>
-                
+            <form onSubmit={onSubmit}>
                 {singUpInputs.map((input) => (
                     <Input
                         key={input.id}

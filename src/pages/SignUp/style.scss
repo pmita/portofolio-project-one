@@ -13,11 +13,5 @@ form{
     width: 55%;
     min-height: 250px;
     @include flex(column, space-evenly, stretch);
-    label{
-        margin: 1rem 0;
-        span{
-            margin: 1rem 0;
-        }
-    }
 }
 

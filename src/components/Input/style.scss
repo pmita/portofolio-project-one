@@ -1,0 +1,16 @@
+label{
+    margin: 1rem 0;
+    span{
+        margin: 1rem 0;
+    }
+}
+
+.error{
+    margin: 0;
+    color: red;
+    display: none;
+}
+
+input:invalid[focused='true'] ~ .error{
+    display: block;
+}
