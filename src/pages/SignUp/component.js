@@ -1,43 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.scss';
+//COMPONENTS
+import Input from '../../components/Input';
 
 const SignUpPage = () => {
+    //STATE & VARIABLES
+    const [signUpValues, setSignUpValues] = useState({
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+    })
+
+    const singUpInputs = [
+        {
+            id: 1,
+            name: 'username',
+            type: 'text',
+            placeholder: 'Please enter your user name',
+            label: 'Username',
+            required: true
+        },
+        {
+            id: 2,
+            name: 'email',
+            type: 'email',
+            placeholder: 'Please enter your email',
+            label: 'Email',
+            required: true
+        },
+        {
+            id: 3,
+            name: 'password',
+            type: 'password',
+            placeholder: 'Please enter your password',
+            label: 'Password',
+            required: true
+        },
+        {
+            id: 4,
+            name: 'confirmPassword',
+            type: 'password',
+            placeholder: 'Please confirm your password',
+            label: 'Confirm Password',
+            required: true
+        }
+    ]
+
+    //EVENTS
+    const onChange = (e) => {
+        setSignUpValues({ ...signUpValues, [e.target.name]: e.target.value })
+    }
+
     return(
         <div className='signup-page'>
             <h2>Sign Up</h2>
             <form>
-                <label>
-                    <span>Username</span>
-                    <input
-                        type='text'
-                        placeholder='Please enter your user name'
-                        required
+                
+                {singUpInputs.map((input) => (
+                    <Input
+                        key={input.id}
+                        {...input}
+                        value={signUpValues[input.name]}
+                        onChange={onChange}
                     />
-                </label>
-                <label>
-                    <span>Email</span>
-                    <input
-                        type='email'
-                        placeholder='Please enter your email'
-                        required
-                    />
-                </label>
-                <label>
-                    <span>Password</span>
-                    <input
-                        type='password'
-                        placeholder='Please enter your password'
-                        required
-                    />
-                </label>
-                <label>
-                    <span>Password Match</span>
-                    <input
-                        type='text'
-                        placeholder='Please re-type your password'
-                        required
-                    />
-                </label>
+                ))}
+
+                <button className='btn'>Sign Up</button>
             </form>
         </div>
     );
