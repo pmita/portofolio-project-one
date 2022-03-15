@@ -32,8 +32,8 @@ const Navbar = () => {
             </span>
 
             <ul className={isHidden ? 'nav-routes active' : 'nav-routes'}>
-                {navLinks.map(({ icon, altText, navText }) => (
-                    <li>
+                {navLinks.map(({ id, icon, altText, navText }) => (
+                    <li key={id}>
                         <img src={icon} alt={altText} />
                         <span>{navText}</span>
                     </li>

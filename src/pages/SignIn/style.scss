@@ -1,0 +1,19 @@
+//Base files
+@import '../../styles/abstract/global';
+@import '../../styles/base/variables';
+@import '../../styles/mixins/mixins';
+
+.signin-page{
+    min-height: 90vh;
+    width: 100%;
+    background: $black;
+    color: $white;
+    @include flex(column, center, center)
+}
+
+form{
+    width: 55%;
+    min-height: 250px;
+    @include flex(column, space-evenly, stretch);
+}
+
