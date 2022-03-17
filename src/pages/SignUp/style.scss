@@ -6,6 +6,8 @@
 .signup-page{
     min-height: 90vh;
     width: 100%;
+    background: $black;
+    color: $white;
     @include flex(column, center, center)
 }
 

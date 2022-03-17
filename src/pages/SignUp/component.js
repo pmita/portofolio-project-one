@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import './style.scss';
 //COMPONENTS
 import Input from '../../components/Input';
+//HOOKS
+import { useSignUp } from '../../hooks/useSignUp';
+//ROUTER
+import { useNavigate } from 'react-router-dom';
 
 const SignUpPage = () => {
     //STATE & VARIABLES
@@ -10,8 +14,7 @@ const SignUpPage = () => {
         email: '',
         password: '',
         confirmPassword: ''
-    })
-
+    });
     const singUpInputs = [
         {
             id: 1,
@@ -56,12 +59,15 @@ const SignUpPage = () => {
             pattern: signUpValues.password,
             autoComplete: 'off'
         }
-    ]
+    ];
+    const { isPending, error, signup } = useSignUp();
+    const navigate = useNavigate();
 
     //EVENTS
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(signUpValues);
+        signup(signUpValues.email, signUpValues.password);
+        navigate('/');
     }
 
     const onChange = (e) => {
@@ -81,6 +87,8 @@ const SignUpPage = () => {
                     />
                 ))}
 
+                {error && <p className='error'>{error}</p>}
+                {isPending && <p className='pending'>Loading...</p>}
                 <button className='btn'>Sign Up</button>
             </form>
         </div>
