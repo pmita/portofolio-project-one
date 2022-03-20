@@ -29,7 +29,7 @@ export const useSignUp = () => {
             });
 
             //UPDATE USER CONTEXT STATE
-            dispatch({ type: 'SIGNIN', payload: response.user });
+            dispatch({ type: 'SIGNUP', payload: response.user });
 
             //RESET STATE
             if(!isCancelled){

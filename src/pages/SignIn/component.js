@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import './style.scss';
 //COMPONENTS
 import Input from '../../components/Input';
+//HOOKS
+import { useSignIn } from '../../hooks/useSignIn';
+//ROUTER
+import { useNavigate } from 'react-router-dom';
 
 const SignInPage = () => {
     //STATE & VARIABLES
@@ -32,12 +36,15 @@ const SignInPage = () => {
             pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
             autoComplete: 'on'
         },
-    ]
+    ];
+    const { signin, isPending, error } = useSignIn();
+    const navigate = useNavigate();
 
     //EVENTS
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(signInValues);
+        signin(signInValues.email, signInValues.password);
+        navigate('/');
     }
 
     const onChange = (e) => {
@@ -57,6 +64,8 @@ const SignInPage = () => {
                     />
                 ))}
 
+                {error && <p className='error'>{error}</p>}
+                {isPending && <p className='pending'>Loading...</p>}            
                 <button className='btn'>Sign In</button>
             </form>
         </div>
